@@ -247,4 +247,4 @@ if semester == 5:
     cm5i(start, end)
 if semester == 6:
     print("  No results availalbe for CO6I")
-print("  Fetching is done check out your CSV file")
+# print("  Fetching is done check out your CSV file")

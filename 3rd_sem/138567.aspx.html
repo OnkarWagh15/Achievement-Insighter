@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://msbte.org.in/pcwebBTRes/pcResult01/pcfrmViewMSBTEResult.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+</title><meta http-equiv="page-enter" content="blendTrans(duration=0)"><meta http-equiv="page-exit" content="blendTrans(duration=0)"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><link href="./138567.aspx_files/bootstrap.min.css" rel="stylesheet">
+    <script src="./138567.aspx_files/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        /*-------------------------------------------------*
+         *Script: To Manage Enter Key Pressed(instead of   *
+         *      : Tab Key), Angled Brackets, textareas etc.*
+         *      : Helps to focus on tabIndex > 0           *
+         *-------------------------------------------------*/
+        $(document).ready(function () {
+            var inputs = $(':input').keypress(function (e) {
+                if (e.which == 60 || e.which == 62) {
+                    return false;
+                }
+
+                else if (e.which == 13 && (e.target.tagName != 'textarea')) {
+                    e.preventDefault();
+                    var intI = 0;
+
+                    while (intI >= 0) {
+                        intI = intI + 1;
+                        var nextInput = inputs.get(inputs.index(this) + intI);
+
+                        if (nextInput) {
+                            var tabIndexNo = nextInput.getAttribute('tabIndex');
+
+                            if (tabIndexNo > 0) {
+                                nextInput.focus();
+                                break;
+                            }
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        /*--------------------*
+         *Script: Print Result*
+         *--------------------*/
+        $(document).ready(function () {
+            $('#btnPrintResult').on('click', function () {
+                var oWindow = window.open();
+                oWindow.document.write($('#divContent').html());
+                oWindow.print();
+                oWindow.close();
+                return true;
+            });
+        });
+    </script>
+</head>
+<body>
+    <form method="post" action="https://msbte.org.in/pcwebBTRes/pcResult01/pcfrmViewMSBTEResult.aspx" id="pcfrmViewMSBTEResult">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="D3A1F3C7">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="W7IM6J2l/ZEXU8GyLBEueag5Jv9CuSX5yydkAkNYfrJR7/i2ExrBp9fH32/vePJGK4IzAVzR5y5jKVzmCvkfHwdjIUJnZJ7hMAcvMbjZIJAmJkNh4zHUhFwaL9wj3BUSnYFMgBSZCUpp6qle+qUKX9pGLro8n/HzFOuXwv94BdTchcQ+i+s/YsjjzEc+3iub1hqdzI7N4ifUE35zj9jzr1ZKIHHhfrDaSUNNGnOpE/HgvMBWRJYXWQ11uvui0zJxuKdEx6iYpjH711IZ1A2Lt8NtdGshONhdhoU2P4MJfRjMHmDVBtY5gBQJ5E+Pipr6txeqS4HmNPcmbzmr1l3ifA==">
+</div>
+        <div class="container d-flex justify-content-center" style="background-color: #fff; min-height: 0%; margin-top: 0.5%; margin-bottom: 0.5%;">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img src="./138567.aspx_files/logo.png" style="height: 84px" alt="MSBTE LOGO">
+                </div>
+                <div class="col-sm-10">
+                    <h4 style="padding-top: 1px; font-family: Cinzel Decorative; font-weight: bold;" class="text-left">Maharashtra State Board of Technical Education</h4>
+                    <h4 style="padding-top: 1px; margin: 0 0 0px; color: black; font-size: 19px; font-weight: 900; font-family: &#39;Arya&#39;, sans-serif;" class="text-left">महाराष्ट्र राज्य तंत्र शिक्षण मंडळ, मुंबई</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 d-lg-block d-sm-none">
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="card content" style="background-color: #FFFFDF; font-family: Calibri">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <span id="lblEnrollOrSeatNoSelect" class="col-lg-6 col-sm-12 col-form-label" style="font-family: Calibri; font-weight: 600; text-decoration: underline">Select Enrollment No. or Seat No.</span>
+                            <div class="col-lg-6 col-sm-12">
+                                <select name="ddlEnrollOrSeatNo" id="ddlEnrollOrSeatNo" class="ddlmaster form-select">
+	<option value="0">(See Below)</option>
+	<option value="1">Seat No</option>
+	<option selected="selected" value="2">Enrollment No</option>
+
+</select>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <span id="lblEnrollOrSeatNo" class="col-lg-6 col-sm-12 col-form-label" style="font-family: Calibri; font-weight: 600; text-decoration: underline">Enter Enrollment No. Or Seat No. </span>
+                            <div class="col-lg-6 col-sm-12">
+                                <input name="txtEnrollOrSeatNo" type="text" value="2007110380" maxlength="180" id="txtEnrollOrSeatNo" title="Enter above Captcha here" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <span id="lblCaptchaMsg" class="col-lg-6 col-sm-12 col-form-label" style="font-family: Calibri; font-weight: 600; text-decoration: underline">Captcha </span>
+                            <div class="col-lg-6 col-sm-12">
+                                <img id="imgCaptcha" src="./138567.aspx_files/3851394.png">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <span id="lblCaptchaFeeding" class="col-lg-6 col-sm-12 col-form-label" style="font-family: Calibri; font-weight: 600; text-decoration: underline">Type Above Captcha Here </span>
+                            <div class="col-lg-6 col-sm-12">
+                                <input name="txtCaptchaHot" type="text" maxlength="15" id="txtCaptchaHot" title="Enter above Captcha here" class="form-control" aria-describedby="captchaHelp">
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-6 d-lg-block d-sm-none">
+                            </div>
+                            <div class="col-sm-6">
+                                <input name="txtUriNo" type="text" value="2477" maxlength="10" readonly="readonly" id="txtUriNo" title="Current Uri No.(Extension only)" aria-describedby="UriHelp01" style="max-width: 1px; max-height: 1px; border: none; float: right">
+                                <input name="txtPrevUriOffSet" type="text" value="1714323" maxlength="35" readonly="readonly" id="txtPrevUriOffSet" title="Previous Uri Offset(By Right side)" aria-describedby="UriHelp03" style="max-width: 1px; max-height: 1px; border: none; float: right">
+                                <input name="txtCaptchaCold" type="text" value="f5154059c" maxlength="10" readonly="readonly" id="txtCaptchaCold" title="Previous Uri No.(without Extension)" aria-describedby="UriHelp02" style="max-width: 1px; max-height: 1px; border: none; float: right">
+                                <input name="txtAlert" type="text" maxlength="240" id="txtAlert" title="URL Track No." aria-describedby="AlertHelp" style="max-width: 1px; max-height: 1px; border: none; float: right">
+                                <input type="image" name="btnShowResult" id="btnShowResult" title="Click To Show Result" src="./138567.aspx_files/pcbtnShowResult.png" style="margin-left: -13px; float: right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 d-lg-block d-sm-none">
+            </div>
+        </div>
+   
+        <div id="divResult">
+            <div class="row">               
+                <div class="col-lg-2 col-sm-1">
+                </div>
+                <div class="col-lg-8 col-sm-10">
+                    <button id="btnPrintResult" type="button" style="z-index: -1; border: none; background-image: url(../pcImg/pcImgbuttons/pcPrintBtn.png); width: 100px; height: 30px; margin-left: -45px" title="Click To Print Result"></button>
+                </div>
+                <div class="col-md-1">
+                    <input type="image" name="btnClose" id="btnClose" title="Click To Close Result" class="btn btn-outline-light text-right" src="./138567.aspx_files/pcCloseBtn.png">
+                </div>
+            </div>
+            <div id="divContent">
+
+
+    <title>  </title>
+
+   <style>
+
+         body
+        {
+            font-family:Calibri;
+        }
+
+        .tableRecordPadding
+        {
+            font-weight:bold; 
+            padding:2px 0 2px 2px;
+        }
+
+         .Error
+        {
+            text-align: center;
+            margin: 70px 0;
+            color: red;
+            font-size: 1.5em;
+        }
+
+             .Error1
+        {
+            text-align: center;
+            color: red;
+            font-size: 1.5em;
+        }
+
+
+        .statment
+        {
+            font-family: Calibri; 
+            text-align:center;
+            margin-top:20px;
+            text-transform:uppercase;
+        }
+
+
+        .tbl tr td
+        {   
+            padding:2px 5px; 
+        }
+
+        .Instruct
+        {
+            display:table-cell;
+
+        }
+
+
+
+        * {
+            margin:0px;
+            padding:0px;
+
+        }
+
+        .main {
+             width: 1050px;
+            height: auto;
+            border: 3px dotted black;
+            margin: auto;
+            padding: 10px;
+        }
+
+
+ .heading {
+            width:100%;
+            height:100px;
+   }
+
+
+        .heading h1, h3 {
+
+            font-family:'Old English Text MT';
+            text-align:center
+
+
+        }
+
+
+        .img {
+            width:10%;
+            height:100px;
+            float:left;
+            margin-left:15px;
+ }
+
+        .td
+        {
+
+           /*border-left:1px solid;
+           border-right:1px solid;
+           border-bottom:1px solid;*/
+            height:15px;
+            width:205px;
+           text-align:center;
+        }
+
+        .td1
+        {
+            /*border: 1px solid;*/
+            height: 15px;
+            width:80px;
+            text-align:center;
+          
+         
+        }
+        table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+        .col
+        {
+            border:0px;
+            border-bottom:1px dashed;
+            border-collapse:collapse;
+            height:40px;
+        }
+
+
+
+    </style>
+
+
+
+
+    <div class="main">
+         <img class="img" src="./138567.aspx_files/logo.png" border="0" alt="MSBTE LOGO">
+        
+        <div class="heading">
+        <h1 style="font-size:41px;">Maharashtra State Board of Technical Education</h1>
+        <h3 class="statment">Statement of Marks</h3>
+        </div>
+
+    <div>
+     <table style="width:100%;margin-top:10px;border:0px solid">
+                      <tbody><tr>
+                      <td style="width:155px;" class="col">&nbsp;&nbsp;&nbsp;<strong>MR. / MS.</strong></td>
+                      <td colspan="6" class="col"><strong>TUSHAR HANS</strong></td>
+                          </tr>
+
+                      <tr>
+                      <td style="width:155px;" class="col">&nbsp;&nbsp;&nbsp;<strong>ENROLLMENT NO.</strong></td>
+                            <td style="width:170px;" class="col"> 2007110380</td>
+                            <td style="width:150px;" class="col"><strong>EXAMINATION</strong></td>
+                           <td style="width:150px;" class="col">WINTER 2021</td>
+                            <td style="width:100px;" class="col"><strong>SEAT NO.</strong></td>
+                          <td style="width:100px;" class="col">138567</td>
+                          <td class="col"><strong>THIRD SEMESTER</strong></td>
+                          </tr>
+
+                      <tr>
+                          <td style="margin-right:20px;width:155px;" class="col">&nbsp;&nbsp;&nbsp;<strong>COURSE</strong></td>
+                          <td colspan="6" class="col">Diploma In Computer Engineering</td>
+                      </tr>
+                  </tbody></table>
+
+
+   <div id="dvMain0"> <table border="1" cellspacing="0" align="center" widht="0"><tbody><tr><td width="700px" height="30px" align="center" rowspan="2"><strong>TITLE OF COURSES</strong></td><td width="150px" height="30px" align="center" rowspan="2"><strong>TH/<br> PR</strong></td><td width="150px" height="30px" align="center" rowspan="2"><strong>COURSE<br>  HEAD</strong></td><td width="150px" height="30px" align="center" colspan="3"><strong>MARKS</strong></td><td width="150px" height="30px" align="center" colspan="2"><strong>TOTAL MARKS</strong></td><td width="150px" height="30px" align="center" rowspan="2"><strong>CREDITS</strong></td></tr><tr><td width="150px" height="30px" align="center"><strong>MAX.</strong></td><td width="150px" height="30px" align="center"><strong>MIN. </strong></td><td width="150px" height="30px" align="center"><strong>OBT.</strong></td><td width="150px" height="30px" align="center"><strong>MAX</strong></td><td width="150px" height="30px" align="center"><strong>OBT</strong></td></tr><tr><td><strong>OBJECT ORIENTED PROGRAMMING USING C++</strong></td><td align="center"><strong>TH</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>070</strong></td><td align="center"><strong>028</strong></td><td align="center"><strong>058   </strong></td><td align="center"><strong>100</strong></td><td align="center"><strong>080   </strong></td><td align="center"><strong>7</strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>030</strong></td><td align="center"><strong>000</strong></td><td align="center"><strong>022   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong>PR</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>021   </strong></td><td align="center"><strong>050</strong></td><td align="center"><strong>042   </strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>021   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong>DATA STRUCTURE USING  ‘C’</strong></td><td align="center"><strong>TH</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>070</strong></td><td align="center"><strong>028</strong></td><td align="center"><strong>048   </strong></td><td align="center"><strong>100</strong></td><td align="center"><strong>074   </strong></td><td align="center"><strong>5</strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>030</strong></td><td align="center"><strong>000</strong></td><td align="center"><strong>026   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong>PR</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>021   </strong></td><td align="center"><strong>050</strong></td><td align="center"><strong>042   </strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>021   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong>COMPUTER GRAPHICS</strong></td><td align="center"><strong>TH</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>070</strong></td><td align="center"><strong>028</strong></td><td align="center"><strong>066   </strong></td><td align="center"><strong>100</strong></td><td align="center"><strong>091   </strong></td><td align="center"><strong>5</strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>030</strong></td><td align="center"><strong>000</strong></td><td align="center"><strong>025   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong>PR</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>021   </strong></td><td align="center"><strong>050</strong></td><td align="center"><strong>043   </strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>022   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong>DATABASE MANAGEMENT SYSTEM</strong></td><td align="center"><strong>TH</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>070</strong></td><td align="center"><strong>028</strong></td><td align="center"><strong>056   </strong></td><td align="center"><strong>100</strong></td><td align="center"><strong>082   </strong></td><td align="center"><strong>8</strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>030</strong></td><td align="center"><strong>000</strong></td><td align="center"><strong>026   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong>PR</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>018   </strong></td><td align="center"><strong>050</strong></td><td align="center"><strong>039   </strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>021   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong>DIGITAL TECHNIQUES</strong></td><td align="center"><strong>TH</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>070</strong></td><td align="center"><strong>028</strong></td><td align="center"><strong>062   </strong></td><td align="center"><strong>100</strong></td><td align="center"><strong>086   </strong></td><td align="center"><strong>6</strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>030</strong></td><td align="center"><strong>000</strong></td><td align="center"><strong>024   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong>PR</strong></td><td align="center"><strong>ESE</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>017   </strong></td><td align="center"><strong>050</strong></td><td align="center"><strong>036   </strong></td><td align="center"><strong></strong></td></tr><tr><td><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong>PA</strong></td><td align="center"><strong>025</strong></td><td align="center"><strong>010</strong></td><td align="center"><strong>019   </strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td><td align="center"><strong></strong></td></tr></tbody></table></div>
+         <br>
+           <div id="dvTotal0"><table class="tbl" border="1" cellspacing="0" align="center" widht="0"><tbody><tr><td width="150px" height="30px" align="left" rowspan="2"><strong>DATE :</strong><br> 10/03/2022 </td><td width="600px" height="30px" align="center" rowspan="3">This Marksheet is Downloaded from Internet<br><br><span style="font-weight:bold;"> SECRETARY </span><br>MAHARASHTRA STATE BOARD OF TECHNICAL EDUCATION</td><td width="150px" height="30px" align="center"><strong>TOTAL MAX.<br> MARKS</strong></td><td width="150px" height="30px" align="center"><strong>RESULT WITH<br>%</strong></td><td width="150px" height="30px" align="center"><strong>TOTAL MARKS<br> OBTAINED </strong></td><td width="100px" height="30px" align="center"><strong>TOTAL CREDIT<br> </strong></td></tr><tr><td width="150px" height="30px" align="center"><strong>750</strong></td><td width="150px" height="30px" align="center"><strong>82.00</strong></td><td width="150px" height="30px" align="center"><strong>615</strong></td><td width="150px" height="30px" align="center"><strong>31</strong></td></tr><tr><td width="150px" height="30px" align="left">2/0711/CO3I</td><td width="150px" height="30px" align="center" colspan="4"><strong>FIRST CLASS DIST.  </strong></td></tr></tbody></table></div>
+
+        <div><table class="tbl" border="1" cellspacing="0" align="center" widht="0"><tbody><tr><td colspan="8" style="text-align:center; height:10px"><strong>INSTRUCTIONS</strong></td></tr><tr><td colspan="3"> <span class="Instruct"> 1.</span><span class="Instruct">Report Discrepancy in this certificate to Head of the institution.</span></td><td colspan="5"> <span class="Instruct"> 2.</span><span class="Instruct">This certificate of marks is issued as per prevaling rules and regulations of MSBTE at the time of this exam.</span></td></tr><tr><td colspan="3"><span class="Instruct"> 3.</span><span class="Instruct">Eligibility for III semester is based on total   <br>  number of failure subjects in I &amp; II semesters taken  together.</span></td><td colspan="5"><span class="Instruct"> 4.</span><span class="Instruct">Candidate is eligible for admission to V/VII Semester only if he/she is fully passed in I &amp; II /III &amp; IV semesters &amp; availed benefit of A.T.K.T/PASS at III &amp; IV /V &amp; VI semesters taken together respectively.</span></td></tr><tr><td colspan="8"> <span class="Instruct"> 5.</span><span class="Instruct">Class awarded for Diploma is based on aggregate marks obtained in pre-final &amp; final semester.</span></td></tr><tr><td colspan="8" align="center"><strong>ABBREVATION DETAILS</strong></td></tr><tr><td class="td1">TH</td><td class="td">Theory</td><td class="td1">TW</td><td class="td">Team Work</td><td class="td1">AB</td><td class="td">Absent</td><td class="td1">%</td><td class="td">Percentage of Marks</td></tr><tr><td class="td1">TM</td><td class="td">Theory Test Marks</td><td class="td1">PJ</td><td class="td">Project Work</td><td class="td1">EX</td><td class="td">Exemption</td><td class="td1" rowspan="2">WFLY</td><td class="td" rowspan="2">Result Withheld Due to Pending Lower Year</td></tr><tr><td class="td1">PR</td><td class="td">Practical</td><td class="td1">SW</td><td class="td">Sessional</td><td class="td1">OTP</td><td class="td">Optional</td></tr><tr><td class="td1">PM</td><td class="td">Practical Test Marks</td><td class="td1">IT</td><td class="td">Industrial Training</td><td class="td1">LSP</td><td class="td">Lower Semester Pending</td><td class="td1">CON</td><td class="td">Condoned</td></tr><tr><td class="td1">AG</td><td class="td">Aggregate</td><td class="td1">@</td><td class="td">Condoned Marks</td><td class="td1">PLY</td><td class="td">Pending Lower Year</td><td class="td1">FT</td><td class="td">Failure But Allowed To Keep Term</td></tr><tr><td class="td1">AP</td><td class="td">Additional Practical</td><td class="td1">*</td><td class="td">Failure Marks</td><td class="td1" rowspan="3">WFLS</td><td class="td" rowspan="3">Result Withheld Due To Pending Lower Semester</td><td class="td1">A.T.K.T</td><td class="td">Allowed to Keep Term</td></tr><tr><td class="td1">OR</td><td class="td">Oral</td><td class="td1">#</td><td class="td">Carry Forward Marks</td><td class="td1" rowspan="2">DIST</td><td class="td" rowspan="2">Distinction</td></tr><tr><td class="td1">ESE</td><td class="td">End Semester Exam</td><td class="td1">PA</td><td class="td">Progressive Assessment</td></tr><tr><td colspan="8"><strong>Ref:Formerly known as The board of Technical Examinations Maharashtra State of Technical Education Act 1997(Mah XXXVIII of 1997) and Maharashtra Government Gazette Notification Section IV-B issued on march 31,1999(-172/16/200/20-04:07:2007 12:00:28)</strong></td></tr><tr><td rowspan="2" colspan="5">Result Declared On 10/03/2022</td><td colspan="4" style="text-align:right">Url:-https://www.msbte.org.in</td></tr><tr><td colspan="4" style="text-align:right">E &amp; OE</td></tr></tbody></table></div>
+                   
+         </div>
+        </div>
+       
+    <br>
+    <br>
+
+    <p style="page-break-after: always;">&nbsp;</p>
+    <!--<p style="page-break-before: always;">&nbsp;</p>-->
+
+
+
+
+
+</div>
+        </div>
+
+        <script type="text/javascript">
+            {
+                if (document.getElementById("txtAlert").value > "") {
+                    window.alert(document.getElementById("txtAlert").value);
+                    document.getElementById("txtAlert").value = "";
+                }
+            }
+        </script>
+    </form>
+
+
+
+</body></html>
