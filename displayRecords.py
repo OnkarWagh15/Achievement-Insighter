@@ -1,19 +1,25 @@
+from streamlit import session_state as session
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 from PIL import Image
 import sys
-
-
-
+import os
 
 st.set_page_config(page_title='Analysis', layout="wide")
-st.header(':blue[MSBTE] | :blue[Semester Results]' )
-st.subheader('Format: Marks-Total-Percentange-Class')
-st.subheader('------------------------')
-df=pd.read_csv(sys.argv[1])
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.header(':blue[MSBTE] | :blue[Semester Results]' )
+    st.subheader('------------------------')
+with col3:
+    st.write("BUTTONS TO BE DISPLAYED")
+        
+        
+df=pd.read_csv(sys.argv[1]) 
 totalStudents=df.shape[0]
 st.write('Total Number of Records:',totalStudents)
+
 
 def color_value(val, threshold):
     global countOfFail
@@ -42,31 +48,44 @@ with col1:
                     names='percentage')
     st.plotly_chart(pieChart)
 with col2:
-    st.text(" ") 
-    st.text(" ") 
-    st.text(" ")
-    st.text(" ")
-    st.text(" ")
-    st.text(" ") 
-    st.text(" ") 
+    for i in range (1,5):
+        st.text(" ") 
     if st.button('Percentange Range and Class Awarded:', key=None, help=None, on_click=None,args=None, kwargs=None,use_container_width=True) is True:
-        st.write('Percentage Range: 85-100 : First Class With Distinction')
-        st.write('Percentage Range: 70-85 : First Class')
-        st.write('Percentage Range: 40-75 : First Class Con')
-        st.write('Percentage Range: 1-40 : ATKT/Fail')
+        st.write('Percentage Range: 75-100 : First Class With Distinction')
+        st.write('Percentage Range: 60-75 : First Class')
+        st.write('Percentage Range: 45-60 : Second Class')
+        st.write('Percentage Range: 40-45 : Pass')
+        st.write('Percentage Range: 0-40 : ATKT/Fail')
+
+
+col3, col4= st.columns(2,gap="large")
+with col3:
+    st.text("Want to download the result sheet? \nClick of below download button: File will be downloaded in csv format \t \t ")
+    @st.cache_data
+    def convert_df(df):
+        return df.to_csv().encode('utf-8')
+    csv = convert_df(df)
+    st.download_button(
+        label="Download",
+        data=csv,
+        file_name='Semester_Result.csv',
+        mime='text/csv',)
+
+with col4:
+    st.text("Want to download the Marksheet of a particular student? \n\t \t ")
+    filename = st.text_input("Enter the filename (including the extension (seatno.aspx.html)): ")
+    folder_path = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/1st_sem/"
+    file_path = os.path.join(folder_path, filename)
+    if st.button("Check Availability ?"):
+        try:
+            with open(file_path, "rb") as file:
+                file_content = file.read()
+            st.write("The Marksheet is Availble, Click on download to Download Marksheet")
+            st.download_button(label="Download", data=file_content, file_name=filename)
+        except FileNotFoundError:
+            st.error("File not found.")
 
 
 
-st.text("Want to download the result sheet? \nClick of below download button: File will be downloaded in csv format \t \t ")
-@st.cache_data
-def convert_df(df):
-    return df.to_csv().encode('utf-8')
 
-csv = convert_df(df)
 
-st.download_button(
-    label="Download",
-    data=csv,
-    file_name='Semester_Result.csv',
-    mime='text/csv',
-)
