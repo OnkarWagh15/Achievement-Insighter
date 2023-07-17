@@ -3,20 +3,30 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 from PIL import Image
+import subprocess
 import sys
 import os
 
 st.set_page_config(page_title='Analysis', layout="wide")
+
+#Read csv file
+df=pd.read_csv(sys.argv[1]) 
+
+#Links to Categorize students page
+def run_another_file(file):
+    subprocess.Popen(["streamlit", "run", "categorizeStudents.py", "--", file])
+
 
 col1, col2, col3 = st.columns(3)
 with col1:
     st.header(':blue[MSBTE] | :blue[Semester Results]' )
     st.subheader('------------------------')
 with col3:
-    st.write("BUTTONS TO BE DISPLAYED")
+    if st.button("Categorize and Analyse Students"):
+        file=sys.argv[1]
+        run_another_file(file)
         
-        
-df=pd.read_csv(sys.argv[1]) 
+
 totalStudents=df.shape[0]
 st.write('Total Number of Records:',totalStudents)
 
@@ -32,6 +42,7 @@ def color_value(val, threshold):
         color='green'
         countOfPerformers +=1    
     else: color=''
+    
     return f'background-color: {color}'
 st.dataframe(df.style.applymap(color_value, subset=['percentage'], threshold=40, ))
 
@@ -74,7 +85,18 @@ with col3:
 with col4:
     st.text("Want to download the Marksheet of a particular student? \n\t \t ")
     filename = st.text_input("Enter the filename (including the extension (seatno.aspx.html)): ")
-    folder_path = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/1st_sem/"
+    if sys.argv[1][0] == '1':
+        folder_path = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/1st_sem/"
+    elif sys.argv[1][0] == '2':
+        folder_path = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/2nd_sem/"
+    elif sys.argv[1][0] == '3':
+        folder_path = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/3rd_sem/"
+    elif sys.argv[1][0] == '4':
+        folder_path = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/4th_sem/"
+    elif sys.argv[1][0] == '5':
+        folder_path = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/5th_sem/"
+    else:
+        folder_path = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/6th_sem/"
     file_path = os.path.join(folder_path, filename)
     if st.button("Check Availability ?"):
         try:

@@ -22,7 +22,7 @@ RangeOfMarks = st.slider(
     value=(0,100))
 st.write("You've Selected Range:", RangeOfMarks)
 
-if 0 < RangeOfMarks[1] < 40:
+if 0 <= RangeOfMarks[1] < 40:
     st.header("Displaying Records of Students applicable for Re-examination")
 elif 40 <= RangeOfMarks[1] < 65:
     st.header("Displaying Records of Students that require attention")
@@ -31,7 +31,7 @@ elif 65 <= RangeOfMarks[1] < 86:
 else:
     st.header("Displaying Records of Students that have scored the highest")
 
-condition = (df['percentage'] > RangeOfMarks[0] ) & (df['percentage'] < RangeOfMarks[1])
+condition = (df['percentage'] >= RangeOfMarks[0] ) & (df['percentage'] <= RangeOfMarks[1])
 filtered_data = df[condition]
 st.dataframe(filtered_data)
 
@@ -62,8 +62,8 @@ with col2:
         condition = ((df['percentage'] >= 0) & (df['percentage'] < 40))
         filtered_df = df[condition]
 
-    filtered_df.to_csv('option.csv', index=False)
-    csv_data = open('option.csv', 'rb').read()
+    filtered_df.to_csv('category.csv', index=False)
+    csv_data = open('category.csv', 'rb').read()
     st.download_button(
         label="Download",
         data=csv_data,

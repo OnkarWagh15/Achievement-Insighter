@@ -2,9 +2,12 @@
 from bs4 import BeautifulSoup
 from html.parser import HTMLParser
 import csv
+import sys
+
 
 
 def cm1i(start, end):
+    
     seat = ""
     total = ""
     remarks = ""
@@ -33,9 +36,12 @@ def cm1i(start, end):
         if i == 138744:
             continue
         filename = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/1st_sem/" + str(i) + ".aspx.html"
-        f = open(filename, 'rb')
-        file_content = f.read()
-        f.close()
+        try:
+            f = open(filename, 'rb')
+            file_content = f.read()
+            f.close()
+        except FileNotFoundError:
+             return -1
         soup = BeautifulSoup(file_content, 'html.parser')
         enrollment = soup.find('strong', string="ENROLLMENT NO.").find_next('td').text
         marks.append(enrollment)
@@ -64,6 +70,8 @@ def cm1i(start, end):
         remarks = soup.find_all('table')[2].find_all('tr')[2].find_all('td')[1].text
 
         marks.append(total)
+        if percentage=='':
+            percentage=0
         marks.append(percentage)
         marks.append(remarks)
 
@@ -99,18 +107,22 @@ def cm3i(start, end):
         if i == 138744:
             continue
         filename = "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/3rd_sem/" + str(i) + ".aspx.html"
-        f = open(filename)
-        file_content = f.read()
-        f.close()
+        try:
+            f = open(filename, 'rb')
+            file_content = f.read()
+            f.close()
+        except FileNotFoundError:
+            return -1
+            
         soup = BeautifulSoup(file_content, 'html.parser')
-        enrollment = soup.find('strong', text="ENROLLMENT NO.").find_next('td').text
+        enrollment = soup.find('strong', string="ENROLLMENT NO.").find_next('td').text
         marks.append(enrollment)
-        seat = soup.find('td', text="SEAT NO.").find_next('td').text
+        seat = soup.find('td', string="SEAT NO.").find_next('td').text
         marks.append(seat)
-        name = soup.find('strong', text="MR. / MS.").find_next('td').text
+        name = soup.find('strong', string="MR. / MS.").find_next('td').text
         marks.append(name)
         for subject in subjects:
-            var = soup.find('td', text=subject)
+            var = soup.find('td', string=subject)
             if var is not None:
                 # print(var.text)
                 for i in range(36):
@@ -131,6 +143,8 @@ def cm3i(start, end):
         remarks = soup.find_all('table')[2].find_all('tr')[2].find_all('td')[1].text
 
         marks.append(total)
+        if percentage=='':
+            percentage=0
         marks.append(percentage)
         marks.append(remarks)
 
@@ -142,8 +156,7 @@ def cm3i(start, end):
     print("Done")
 
 
-# Creating the function which stores the data into the CSV file
-# 5th Sem
+
 def cm5i(start, end):
     seat = ""
     total = ""
@@ -173,18 +186,21 @@ def cm5i(start, end):
         if i == 138744:
             continue
         filename =  "C:/Users/hp/Desktop/Result_Fetcher/MSBTE_Result_Fetcher/5th_sem/" + str(i) + ".aspx.html"
-        f = open(filename)
-        file_content = f.read()
-        f.close()
+        try:
+            f = open(filename, 'rb')
+            file_content = f.read()
+            f.close()
+        except FileNotFoundError:
+            return -1
         soup = BeautifulSoup(file_content, 'html.parser')
-        enrollment = soup.find('strong', text="ENROLLMENT NO.").find_next('td').text
+        enrollment = soup.find('strong', string="ENROLLMENT NO.").find_next('td').text
         marks.append(enrollment)
-        seat = soup.find('td', text="SEAT NO.").find_next('td').text
+        seat = soup.find('td', string="SEAT NO.").find_next('td').text
         marks.append(seat)
-        name = soup.find('strong', text="MR. / MS.").find_next('td').text
+        name = soup.find('strong', string="MR. / MS.").find_next('td').text
         marks.append(name)
         for subject in subjects:
-            var = soup.find('td', text=subject)
+            var = soup.find('td', string=subject)
             if var is not None:
                 # print(var.text)
                 for i in range(36):
@@ -205,6 +221,8 @@ def cm5i(start, end):
         remarks = soup.find_all('table')[2].find_all('tr')[2].find_all('td')[1].text
 
         marks.append(total)
+        if percentage=='':
+            percentage=0
         marks.append(percentage)
         marks.append(remarks)
 
@@ -213,38 +231,21 @@ def cm5i(start, end):
             w.writerow(marks)
         f.close()
         del marks[:]
-    print("Done")
+    # st.write("Done")
 
 
-print("\n================MSBTE RESULT DOWNLOADER===============")
-print("\n  Select Semester")
-print("  1. CO1I")
-print("  2. C02I")
-print("  3. C03I")
-print("  4. CO4I")
-print("  5. CO5I")
-print("  6. CO6I")
-semester = int(input("\n >"))
-print("  You have selected Semester :", semester)
-if semester == 1:
-    start = int(input("  Enter start seat number : "))
-    end = int(input("  Enter End seat number : "))
-    print("  Results for CO1I are being fetched this takes a moment...")
+
+sem=int(sys.argv[1])
+start=int(sys.argv[2])
+end=int(sys.argv[3])
+if sem == 1:
+   
     cm1i(start, end)
-if semester == 2:
-    print("  No reults availabe for CO2I")
-if semester == 3:
-    start = int(input("  Enter start seat number : "))
-    end = int(input("  Enter End seat number : "))
-    print("  Results for CO3I are being fetched this takes a moment...")
+# if sem == 2:
+if sem == 3:
     cm3i(start, end)
-if semester == 4:
-    print("  No reults availabe for CO4I")
-if semester == 5:
-    start = int(input("  Enter start seat number : "))
-    end = int(input("  Enter End seat number : "))
-    print("  Results for CO5I are being fetched this takes a moment...")
+# if sem == 4:
+if sem == 5:
     cm5i(start, end)
-if semester == 6:
-    print("  No results availalbe for CO6I")
-# print("  Fetching is done check out your CSV file")
+# if sem == 6:
+
